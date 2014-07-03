@@ -3,10 +3,38 @@ yii2-basicauth
 
 Simple basic auth component.
 
-Required:
+
+## Required
 * session component
 
-Howto: 
-* Save BasicAuth.php to app/components directory.
-* Configure at config/params.php
-* Attached in target controller's behaviors() func.
+## Howto 
+1. Save BasicAuth.php to app/components directory.
+2. Configure at config/params.php
+3. Attached in target controller's behaviors() func.
+
+
+### In controller
+
+~~~
+class AdminController extends Controller
+{
+	public function behaviors()
+	{
+		return [
+			'basicAuth' => [
+				'class' => "app\components\BasicAuth"
+			],
+		];
+	}
+}
+~~~
+
+### In params.php
+
+~~~
+return [
+    'basicAuth'  => [
+		'username' => 'password',
+	],
+];
+~~~
